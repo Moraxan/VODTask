@@ -14,6 +14,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<VODContext>(
+options => options.UseSqlServer(
+ builder.Configuration.GetConnectionString("VODConnection")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VODTask.Membership.Database.Entities
 {
-	public class SimilarFilms
+	public class SimilarFilm
 	{
 		public int ParentFilmId { get; set; }
 		public int SimilarFilmId { get; set; }
