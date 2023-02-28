@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,6 @@ namespace VODTask.Membership.Database.Entities
 
 		public DateTime Released { get; set; }
 
-		public virtual ICollection<Director>? Directors { get; set; }
-
 		public bool Free { get; set; }
 
 		[StringLength(200, ErrorMessage = "Beskrivningen kan inte vara längre än 200 tecken.")]
@@ -30,5 +29,13 @@ namespace VODTask.Membership.Database.Entities
 		[StringLength(1024, ErrorMessage = "Url:en kan inte vara längre än 1024 tecken.")]
 		public string? FilmUrl { get; set; }
 
+		[ForeignKey(nameof(DirectorId))]
+		public int DirectorId { get; set; }
+
+		
+		public Director? Director { get; set; }	
+
+		public ICollection<SimilarFilm>? SimilarFilms { get; set; }
+		public ICollection<FilmGenre>? FilmGenres { get; set; }
 	}
 }

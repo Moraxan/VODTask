@@ -13,5 +13,7 @@ namespace VODTask.Membership.Database.Entities
 		[Required(ErrorMessage ="Du måste ange en genre.")]
 		[StringLength(50, ErrorMessage = "Texten kan inte vara mer än 50 tecken")]
 		public string? Name {get; set; }
+
+		public ICollection<FilmGenre>? FilmGenres { get; set; }
 	}
 }
