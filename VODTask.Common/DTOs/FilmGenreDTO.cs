@@ -9,6 +9,8 @@ namespace VODTask.Common.DTOs
 	public class FilmGenreDTO
 	{
 		public int FilmId { get; set; }
+		public FilmDTO? Films { get; set; }
 		public int GenreId { get; set; }
+		public GenreDTO? Genre { get; set; }
 	}
 }

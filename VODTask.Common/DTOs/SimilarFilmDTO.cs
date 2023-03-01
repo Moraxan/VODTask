@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VODTask.Common.DTOs
 {
-	internal class SimilarFilmsDTO
+	public class SimilarFilmDTO
 	{
 		public int ParentFilmId { get; set; }
 		public int SimilarFilmId { get; set; }

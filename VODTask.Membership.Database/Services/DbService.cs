@@ -1,4 +1,6 @@
-﻿namespace VODTask.Membership.Database.Services
+﻿using Microsoft.Identity.Client;
+
+namespace VODTask.Membership.Database.Services
 {
 	public class DbService : IDbService
 	{
@@ -13,78 +15,104 @@
 			_mapper = mapper;
 		}
 
-		public async Task<TDto> GetSingleAsync<TEntity, TDto>(int id) where TEntity : class where TDto : class
+
+		public async Task<List<TDto>> GetAsync<TEntity, TDto>()
+			where TEntity : class, IEntity
+			where TDto : class
+		{
+			var entities = await _db.Set<TEntity>().ToListAsync();
+			return _mapper.Map<List<TDto>>(entities);
+		}
+
+		public async Task<List<TDto>> GetAsync<TEntity, TDto>(
+			Expression<Func<TEntity, bool>> expression)
+
+			where TEntity : class, IEntity
+			where TDto : class
+		{
+			var entities = await _db.Set<TEntity>().Where(expression).ToListAsync();
+			return _mapper.Map<List<TDto>>(entities);
+		}
+
+		private async Task<TEntity> SingleAsync<TEntity>(
+			Expression<Func<TEntity, bool>> expression)
+			where TEntity : class, IEntity =>
+			await _db.Set<TEntity>().SingleOrDefaultAsync(expression);
+
+		public async Task<List<TDto>> SingleAsync<TEntity, TDto>(
+			Expression<Func<TEntity, bool>> expression)
+
+			where TEntity : class, IEntity
+			where TDto : class
+		{
+			var entities = await SingleAsync(expression);
+			return _mapper.Map<List<TDto>>(entities);
+
+		}
+
+		public async Task<TEntity> AddAsync<TEntity, TDto>(TDto dto)
+
+
+			where TEntity : class, IEntity
+			where TDto : class
+		{
+			var entity = _mapper.Map<TEntity>(dto);
+			await _db.Set<TEntity>().AddAsync(entity);
+			return entity;
+
+		}
+
+		public async Task<bool> SaveChangesAsync() =>
+				await _db.SaveChangesAsync() >= 0;
+
+		public static string GetURI<TEntity>(TEntity entity) where TEntity : class, IEntity =>
+			$"/{typeof(TEntity).Name.ToLower()}s/{entity.Id}";
+
+		public void Update<TEntity, TDto>(int id, TDto dto)
+			where TEntity : class, IEntity
+			where TDto : class
+		{
+			var entity = _mapper.Map<TEntity>(dto);
+			entity.Id = id;
+			_db.Set<TEntity>().Update(entity);
+
+		}
+
+		public async Task<bool> AnyAsync<TEntity>(
+			Expression<Func<TEntity, bool>> expression)
+			where TEntity: class, IEntity =>
+			await _db.Set<TEntity>().AnyAsync(expression);
+
+		public async Task<bool> DeleteAsync<TEntity>(int id)
+			where TEntity : class, IEntity
 		{
 			try
 			{
-				var entity = await _db.Set<TEntity>().FindAsync(id);
-				return _mapper.Map<TDto>(entity);
+				var entity = await SingleAsync<TEntity>(e => e.Id.Equals(id));
+				if (entity is null) return false;
+				_db.Remove(entity);
+
 			}
 			catch (Exception)
 			{
+
 				throw;
 			}
+			return true;	
+
 		}
 
-		public async Task<List<TDto>> GetAllAsync<TEntity, TDto>() where TEntity : class where TDto : class
+		public void Include<TEntity>() where TEntity: class, IEntity
+
 		{
-			try
-			{
-				var entities = await _db.Set<TEntity>().ToListAsync();
-				return _mapper.Map<List<TDto>>(entities);
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			var propertyNames = _db.Model.FindEntityType(typeof(TEntity))?.GetNavigations().Select(e => e.Name).ToList();
+
+			if (propertyNames is null) return;
+
+			foreach (var name in propertyNames)
+				_db.Set<TEntity>().Include(name).Load();
 		}
 
-		public async Task<int> CreateAsync<TEntity, TDto>(TDto item) where TEntity : class where TDto : class
-		{
-			try
-			{
-				var entity = _mapper.Map<TEntity>(item);
-				_db.Set<TEntity>().Add(entity);
-				await _db.SaveChangesAsync();
-				return entity.Id;
-			}
-			catch (Exception ex)
-			{
-				// Handle the exception
-				return -1;
-			}
-		}
-
-		public async Task<bool> UpdateAsync<TEntity, TDto>(TDto item) where TEntity : class where TDto : class
-		{
-			try
-			{
-				var entity = await _db.Set<TEntity>().FindAsync(item.GetType().GetProperty("Id")?.GetValue(item));
-				if (entity == null) return false;
-				_mapper.Map(item, entity);
-				_db.Set<TEntity>().Update(entity);
-				return await _db.SaveChangesAsync() > 0;
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-		}
-
-		public async Task<bool> DeleteAsync<TEntity>(int id) where TEntity : class
-		{
-			try
-			{
-				var entity = await _db.Set<TEntity>().FindAsync(id);
-				if (entity == null) return false;
-				_db.Set<TEntity>().Remove(entity);
-				return await _db.SaveChangesAsync() > 0;
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-		}
 	}
 }
 

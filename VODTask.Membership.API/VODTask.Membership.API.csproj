@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VODTask.Common\VODTask.Common.csproj" />
     <ProjectReference Include="..\VODTask.Membership.Database\VODTask.Membership.Database.csproj" />
   </ItemGroup>
 

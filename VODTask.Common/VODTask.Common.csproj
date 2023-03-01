@@ -24,9 +24,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\VODTask.Membership.API\VODTask.Membership.API.csproj" />
-    <ProjectReference Include="..\VODTask.Membership.Database\VODTask.Membership.Database.csproj" />
-  </ItemGroup>
-
 </Project>

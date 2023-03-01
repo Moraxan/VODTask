@@ -10,6 +10,12 @@ namespace VODTask.Membership.Database.Entities
 {
 	public class Film : IEntity
 	{
+		public Film()
+		{
+			SimilarFilms = new HashSet<SimilarFilm>();
+			Genres = new HashSet<Genre>();
+		}
+
 		[Key]
 		public int Id { get; set; }
 
@@ -36,6 +42,8 @@ namespace VODTask.Membership.Database.Entities
 		public Director? Director { get; set; }	
 
 		public ICollection<SimilarFilm>? SimilarFilms { get; set; }
-		public ICollection<FilmGenre>? FilmGenres { get; set; }
-	}
+		public ICollection<Genre>? Genres { get; set; }
+
+		
+}
 }
