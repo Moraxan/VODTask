@@ -2,7 +2,7 @@
 
 namespace VODTask.Membership.Database.Services
 {
-	public class DbService : IDbService
+	public class DbService : IDbService, IDbService
 	{
 		private readonly VODContext _db;
 		private readonly IMapper _mapper;
@@ -65,7 +65,7 @@ namespace VODTask.Membership.Database.Services
 		public async Task<bool> SaveChangesAsync() =>
 				await _db.SaveChangesAsync() >= 0;
 
-		public static string GetURI<TEntity>(TEntity entity) where TEntity : class, IEntity =>
+		public string GetURI<TEntity>(TEntity entity) where TEntity : class, IEntity =>
 			$"/{typeof(TEntity).Name.ToLower()}s/{entity.Id}";
 
 		public void Update<TEntity, TDto>(int id, TDto dto)
@@ -80,7 +80,7 @@ namespace VODTask.Membership.Database.Services
 
 		public async Task<bool> AnyAsync<TEntity>(
 			Expression<Func<TEntity, bool>> expression)
-			where TEntity: class, IEntity =>
+			where TEntity : class, IEntity =>
 			await _db.Set<TEntity>().AnyAsync(expression);
 
 		public async Task<bool> DeleteAsync<TEntity>(int id)
@@ -98,11 +98,11 @@ namespace VODTask.Membership.Database.Services
 
 				throw;
 			}
-			return true;	
+			return true;
 
 		}
 
-		public void Include<TEntity>() where TEntity: class, IEntity
+		public void Include<TEntity>() where TEntity : class, IEntity
 
 		{
 			var propertyNames = _db.Model.FindEntityType(typeof(TEntity))?.GetNavigations().Select(e => e.Name).ToList();

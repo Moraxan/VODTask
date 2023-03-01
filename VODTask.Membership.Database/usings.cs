@@ -1,13 +1,9 @@
 ﻿global using AutoMapper;
 global using Microsoft.EntityFrameworkCore;
-global using System;
-global using System.Collections.Generic;
-global using System.Linq;
-global using System.Text;
-global using System.Threading.Tasks;
 global using System.ComponentModel.DataAnnotations;
 global using VODTask.Membership.Database.Entities;
-global using System.Reflection;
-global using System.Reflection.Emit;
 global using System.Linq.Expressions;
 global using VODTask.Membership.Database.Contexts;
+global using VODTask.Membership.Database.Services;
+global using VODTask.Common.DTOs;
+
