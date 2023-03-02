@@ -2,7 +2,7 @@
 
 namespace VODTask.Membership.Database.Services
 {
-	public class DbService : IDbService, IDbService
+	public class DbService : IDbService
 	{
 		private readonly VODContext _db;
 		private readonly IMapper _mapper;
@@ -36,17 +36,16 @@ namespace VODTask.Membership.Database.Services
 
 		private async Task<TEntity> SingleAsync<TEntity>(
 			Expression<Func<TEntity, bool>> expression)
-			where TEntity : class, IEntity =>
-			await _db.Set<TEntity>().SingleOrDefaultAsync(expression);
+			where TEntity : class, IEntity => await _db.Set<TEntity>().SingleOrDefaultAsync(expression);
 
-		public async Task<List<TDto>> SingleAsync<TEntity, TDto>(
+		public async Task<TDto> SingleAsync<TEntity, TDto>(
 			Expression<Func<TEntity, bool>> expression)
 
 			where TEntity : class, IEntity
 			where TDto : class
 		{
 			var entities = await SingleAsync(expression);
-			return _mapper.Map<List<TDto>>(entities);
+			return _mapper.Map<TDto>(entities);
 
 		}
 

@@ -5,7 +5,7 @@
 namespace VODTask.Membership.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class change : Migration
+    public partial class Change : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

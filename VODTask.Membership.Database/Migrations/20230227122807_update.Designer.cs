@@ -13,7 +13,7 @@ namespace VODTask.Membership.Database.Migrations
 {
     [DbContext(typeof(VODContext))]
     [Migration("20230227122807_update")]
-    partial class update
+    partial class Update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

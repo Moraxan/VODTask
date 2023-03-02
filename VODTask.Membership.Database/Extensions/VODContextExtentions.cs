@@ -1,4 +1,5 @@
 ﻿
+
 namespace VODTask.Membership.Database.Extensions
 {
 	public static class VODContextExtentions
@@ -30,7 +31,7 @@ namespace VODTask.Membership.Database.Extensions
 
 				});
 
-				
+
 				await service.SaveChangesAsync();
 				#endregion
 
@@ -44,9 +45,10 @@ namespace VODTask.Membership.Database.Extensions
 					DirectorId = director1.Id,
 					Title = "Släpp fångarene loss det är vår",
 					Released = new DateTime(1975, 12, 6),
+					Free = true,
 					Description = description,
-					SimilarFilms = "",
-					Genres = "Komedi",
+					SimilarFilms = null,
+					Genres = null,
 				});
 
 				await service.AddAsync<Film, FilmDTO>(new FilmDTO
@@ -54,9 +56,9 @@ namespace VODTask.Membership.Database.Extensions
 					DirectorId = director1.Id,
 					Title = "Att angöra en brygga",
 					Released = new DateTime(1965, 12, 26),
+					Free = true,
 					Description = description,
-					SimilarFilms = "",
-					Genres = "Komedi",
+
 
 				});
 
@@ -65,9 +67,9 @@ namespace VODTask.Membership.Database.Extensions
 					DirectorId = director2.Id,
 					Title = "Mosebacke Monarki",
 					Released = new DateTime(1958, 10, 06),
+					Free = false,
 					Description = description,
-					SimilarFilms = "",
-					Genres = "Drama",
+
 
 				});
 				await service.AddAsync<Film, FilmDTO>(new FilmDTO
@@ -75,11 +77,13 @@ namespace VODTask.Membership.Database.Extensions
 					DirectorId = director3.Id,
 					Title = "I huvet på en gammal gubbe",
 					Released = new DateTime(1968, 12, 06),
+					Free = false,
 					Description = description,
-					SimilarFilms = "",
-					Genres = "Drama",
+
 
 				});
+
+				await service.SaveChangesAsync();
 				#endregion
 
 			}
@@ -88,7 +92,7 @@ namespace VODTask.Membership.Database.Extensions
 
 				throw;
 			}
-			
+
 
 
 

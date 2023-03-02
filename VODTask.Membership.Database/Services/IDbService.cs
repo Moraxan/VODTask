@@ -16,7 +16,7 @@
 		string GetURI<TEntity>(TEntity entity) where TEntity : class, IEntity;
 		void Include<TEntity>() where TEntity : class, IEntity;
 		Task<bool> SaveChangesAsync();
-		Task<List<TDto>> SingleAsync<TEntity, TDto>(Expression<Func<TEntity, bool>> expression)
+		Task<TDto> SingleAsync<TEntity, TDto>(Expression<Func<TEntity, bool>> expression)
 			where TEntity : class, IEntity
 			where TDto : class;
 		void Update<TEntity, TDto>(int id, TDto dto)

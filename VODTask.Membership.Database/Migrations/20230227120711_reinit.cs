@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VODTask.Membership.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class reinit : Migration
+    public partial class Reinit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

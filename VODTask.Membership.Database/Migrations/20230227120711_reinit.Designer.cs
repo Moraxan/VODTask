@@ -13,7 +13,7 @@ namespace VODTask.Membership.Database.Migrations
 {
     [DbContext(typeof(VODContext))]
     [Migration("20230227120711_reinit")]
-    partial class reinit
+    partial class Reinit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
