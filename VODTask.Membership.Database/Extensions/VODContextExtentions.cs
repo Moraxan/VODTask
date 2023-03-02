@@ -9,30 +9,30 @@ namespace VODTask.Membership.Database.Extensions
 			try
 			{
 				#region Lorem-Ipsum
-				var description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+				var description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 				#endregion
 
 				#region Add Directors
-				await service.AddAsync<Director, DirectorDTO>(new DirectorDTO
-				{
-					Name = "Tage Danielsson"
+				//await service.AddAsync<Director, DirectorDTO>(new DirectorDTO
+				//{
+				//	Name = "Tage Danielsson"
 
-				});
+				//});
 
-				await service.AddAsync<Director, DirectorDTO>(new DirectorDTO
-				{
-					Name = "Hans Alfredsson"
+				//await service.AddAsync<Director, DirectorDTO>(new DirectorDTO
+				//{
+				//	Name = "Hans Alfredsson"
 
-				});
+				//});
 
-				await service.AddAsync<Director, DirectorDTO>(new DirectorDTO
-				{
-					Name = "Per Åhlin"
+				//await service.AddAsync<Director, DirectorDTO>(new DirectorDTO
+				//{
+				//	Name = "Per Åhlin"
 
-				});
+				//});
 
 
-				await service.SaveChangesAsync();
+				//await service.SaveChangesAsync();
 				#endregion
 
 				#region Add Films
@@ -47,8 +47,8 @@ namespace VODTask.Membership.Database.Extensions
 					Released = new DateTime(1975, 12, 6),
 					Free = true,
 					Description = description,
-					SimilarFilms = null,
-					Genres = null,
+					FilmUrl = "https://www.youtube.com/watch?v=YAUMQzGP1xs"
+					
 				});
 
 				await service.AddAsync<Film, FilmDTO>(new FilmDTO
@@ -58,7 +58,7 @@ namespace VODTask.Membership.Database.Extensions
 					Released = new DateTime(1965, 12, 26),
 					Free = true,
 					Description = description,
-
+					FilmUrl = "https://www.youtube.com/watch?v=UVVxZXvGCw8"
 
 				});
 
@@ -69,7 +69,7 @@ namespace VODTask.Membership.Database.Extensions
 					Released = new DateTime(1958, 10, 06),
 					Free = false,
 					Description = description,
-
+					FilmUrl = "https://www.youtube.com/watch?v=Ba7CtbOs6EE"
 
 				});
 				await service.AddAsync<Film, FilmDTO>(new FilmDTO
@@ -79,7 +79,7 @@ namespace VODTask.Membership.Database.Extensions
 					Released = new DateTime(1968, 12, 06),
 					Free = false,
 					Description = description,
-
+					FilmUrl = "https://www.youtube.com/watch?v=_VsDFCVBuVI"
 
 				});
 
@@ -87,7 +87,7 @@ namespace VODTask.Membership.Database.Extensions
 				#endregion
 
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 
 				throw;

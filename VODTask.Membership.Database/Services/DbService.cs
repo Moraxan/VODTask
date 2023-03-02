@@ -36,7 +36,8 @@ namespace VODTask.Membership.Database.Services
 
 		private async Task<TEntity> SingleAsync<TEntity>(
 			Expression<Func<TEntity, bool>> expression)
-			where TEntity : class, IEntity => await _db.Set<TEntity>().SingleOrDefaultAsync(expression);
+			where TEntity : class, IEntity => await _db.Set<TEntity>()
+			.SingleOrDefaultAsync(expression);
 
 		public async Task<TDto> SingleAsync<TEntity, TDto>(
 			Expression<Func<TEntity, bool>> expression)

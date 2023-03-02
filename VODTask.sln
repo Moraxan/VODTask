@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VODTask.Admin.UI", "VODTask.Admin.UI\VODTask.Admin.UI.csproj", "{5F07356D-9FF7-4AD1-B814-F19B64DC029C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VODTask.Admin.UI", "VODTask.Admin.UI\VODTask.Admin.UI.csproj", "{5F07356D-9FF7-4AD1-B814-F19B64DC029C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VODTask.Common", "VODTask.Common\VODTask.Common.csproj", "{EC0B6815-B126-4E68-967E-AAE8F1AEBED8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VODTask.Common", "VODTask.Common\VODTask.Common.csproj", "{EC0B6815-B126-4E68-967E-AAE8F1AEBED8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VODTask.Membership.Database", "VODTask.Membership.Database\VODTask.Membership.Database.csproj", "{E11563B7-18CD-4F0D-BD5F-ACF735278960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VODTask.Membership.Database", "VODTask.Membership.Database\VODTask.Membership.Database.csproj", "{E11563B7-18CD-4F0D-BD5F-ACF735278960}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VODTask.Membership.API", "VODTask.Membership.API\VODTask.Membership.API.csproj", "{496C4225-968B-4942-AEC9-2E25DA391F96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VODTask.Membership.API", "VODTask.Membership.API\VODTask.Membership.API.csproj", "{496C4225-968B-4942-AEC9-2E25DA391F96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
