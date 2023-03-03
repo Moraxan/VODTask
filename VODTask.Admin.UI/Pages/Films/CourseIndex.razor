@@ -1,0 +1,33 @@
+﻿
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Released</th>
+      <th scope="col">Free</th>
+      <th scope="col">Description</th>
+      <th scope="col">FilmURL</th>
+      <th scope="col">Director</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var item in Model)
+      {
+    <tr>
+      <td>@item.Title</td>
+      <td>@item.Released</td>
+      <td>(@item.Free ? "Free :"")</td>
+      <td>@item.Description</td>
+      <td>@item.FilmUrl</td>
+      <td>@item.DirectorId</td>
+    </tr>
+      }
+   
+</tbody>
+
+</table>
+
+@code {
+	[Parameter] public List<FilmDTO> Model { get; set; } = new();
+	[Parameter] public EventCallback<ClickModel> OnClick { get; set; }
+}

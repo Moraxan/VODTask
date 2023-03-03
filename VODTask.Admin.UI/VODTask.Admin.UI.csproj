@@ -9,6 +9,9 @@
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Films\" />
+    <Folder Include="Pages\Directors\" />
+    <Folder Include="Pages\Genres\" />
+    <Folder Include="Pages\SimilarFilms\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +21,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VODTask.Common\VODTask.Common.csproj" />
   </ItemGroup>
 
 </Project>
