@@ -87,7 +87,7 @@ namespace VODTask.Membership.Database.Extensions
 				#endregion
 
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 
 				throw;

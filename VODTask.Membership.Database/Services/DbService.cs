@@ -66,7 +66,7 @@ namespace VODTask.Membership.Database.Services
 				await _db.SaveChangesAsync() >= 0;
 
 		public string GetURI<TEntity>(TEntity entity) where TEntity : class, IEntity =>
-			$"/{typeof(TEntity).Name.ToLower()}s/{entity.Id}";
+			$"api/{typeof(TEntity).Name.ToLower()}s/{entity.Id}";
 
 		public void Update<TEntity, TDto>(int id, TDto dto)
 			where TEntity : class, IEntity

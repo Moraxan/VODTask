@@ -13,8 +13,8 @@ namespace VODTask.Common.DTOs
 		public string Name { get; set; } = null!;
 	}
 
-	public class GenreDTO : GenreBaseDTO
-	{
-		public List<FilmDTO> Films { get; set; } = new();
-	}
+	//public class GenreDTO : GenreBaseDTO
+	//{
+	//	public List<FilmDTO> Films { get; set; } = new();
+	//}
 }
