@@ -16,6 +16,8 @@
 	<button type="button" class="btn btn-primary rounded-0 me-1" @onclick="()=>ChangePageType(PageTypes.Create)">Create</button>
 	</div>
 
+	<FilmsIndex OnClick="OnClick" Model="Model"></FilmsIndex>
+
 @code {
 	List<FilmDTO> Model { get; set; } = new();
 	string Alert = string.Empty;
@@ -30,5 +32,10 @@
 		Alert = "test";// string.Empty;
 		Model = await AdminService.GetAsync<FilmDTO>($"films?freeonly=false");
 		//var film = await AdminService.SingleAsync<FilmDTO>($"films/1006");
+	}
+
+	async Task OnClick(ClickModel model )
+	{
+		ChangePageType(model.PageType);
 	}
 }
